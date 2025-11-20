@@ -1,0 +1,175 @@
+/* Base styling */
+:root{
+  --accent: #007BFF;
+  --bg: #f2f6fb;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #666;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #e9f2ff 0%, var(--bg) 100%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+/* Header */
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom: 12px;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+.controls-top {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.unit-toggle {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:0.95rem;
+}
+.unit-toggle input { transform: scale(1.1); }
+
+/* Search and favorites */
+.search-section {
+  display:flex;
+  gap:24px;
+  align-items:flex-start;
+  margin-bottom: 18px;
+}
+.search-box {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+#city-input {
+  padding:10px;
+  width: 320px;
+  border-radius:6px;
+  border:1px solid #cfcfcf;
+  outline:none;
+}
+#city-input:focus { box-shadow:0 0 0 3px rgba(0,123,255,0.12); }
+
+.search-box button {
+  padding:9px 12px;
+  background: var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+.search-box button[title] { background:#28a745; }
+.search-box button:active { transform: translateY(1px); }
+
+.favorites {
+  min-width:180px;
+  max-width:240px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding:12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+.favorites h3 { margin: 0 0 8px 0; font-size:1rem; }
+.favorites-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; }
+.favorites-list li {
+  display:flex; justify-content:space-between; gap:8px;
+  align-items:center; padding:6px 8px; border-radius:6px; background: #f8f9fb;
+}
+.fav-btn { background:transparent; border:none; color:var(--accent); cursor:pointer; }
+
+/* Weather info and forecast */
+.weather-display {
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+  margin-bottom:20px;
+}
+.weather-info {
+  flex:1 1 320px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding:18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  text-align:center;
+}
+.city-name {
+  font-size:1.2rem;
+  font-weight:600;
+  color:var(--accent);
+  margin-bottom:8px;
+}
+.temperature {
+  font-size:2.4rem;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.description { font-size:1rem; color:var(--muted); margin-bottom:6px; }
+.coords { font-size:0.9rem; color:#555; margin-bottom:12px; }
+.fav-actions { display:flex; gap:8px; justify-content:center; }
+.fav-actions button { padding:8px 10px; border-radius:6px; border:1px solid #e0e0e0; cursor:pointer; }
+
+.forecast {
+  flex:1 1 480px;
+}
+.forecast h2 { margin:0 0 8px 0; font-size:1.05rem; }
+.forecast-days {
+  display:flex; gap:12px; flex-wrap:wrap;
+}
+.day-card {
+  background:var(--card);
+  border-radius:10px;
+  padding:12px;
+  min-width:140px;
+  max-width:220px;
+  flex:1 1 140px;
+  text-align:center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+.day-date { font-weight:600; margin-bottom:6px; }
+.day-icon { font-size:1.6rem; margin-bottom:6px; }
+.day-temp { font-size:1.2rem; font-weight:700; margin-bottom:6px; }
+.day-desc { color:var(--muted); margin-bottom:6px; }
+
+
+/* Mobile devices (max-width: 600px) */
+@media only screen and (max-width: 600px) {
+  .container { padding:12px; }
+  .search-section { flex-direction:column; gap:12px; }
+  #city-input { width:100%; }
+  .weather-display { flex-direction:column; }
+  .forecast-days { flex-direction:column; }
+  .favorites { order: 3; width:100%; }
+}
+
+/* Tablets (601 - 900) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .container { padding:14px; }
+  .search-section { flex-direction:row; gap:12px; align-items:flex-start; }
+  .forecast-days { flex-direction:row; flex-wrap:wrap; justify-content:center; }
+}
+
+/* Desktops (901px and up) */
+@media only screen and (min-width: 901px) {
+  .container { padding:18px; }
+}
